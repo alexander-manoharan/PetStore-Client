@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using PetStore.Demo;
+using PetStore.Demo.Models;
 using Xunit;
 
 public class PetStoreClientTest {
@@ -7,7 +9,7 @@ public class PetStoreClientTest {
 
     [Fact]
     public async void NumberOfPetsTest() {
-        var pets = await client.GetAvailablePets();
+        List<Pet> pets = (await client.GetAvailablePets()).ToList();
         var inventory = await client.GetInventory();
         Assert.Equal(inventory.Available, pets.Count);
     }

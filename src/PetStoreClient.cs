@@ -26,7 +26,7 @@ namespace PetStore.Demo
                 new MediaTypeWithQualityHeaderValue(ApplicationJson));
         }
 
-        private static List<Pet> SortPets(List<Pet> pets) {
+        private static IEnumerable<Pet> SortPets(IEnumerable<Pet> pets) {
             return pets.OrderBy(pet => pet.Category == null ? "" : pet.Category.Name).
                         ThenByDescending(pet => pet.Name).ToList();
         }
@@ -44,18 +44,18 @@ namespace PetStore.Demo
             return inventory;
         }
 
-        public Task<List<Pet>> GetAvailablePets() {
+        public Task<IEnumerable<Pet>> GetAvailablePets() {
             return GetPetsByStatus(GetPetsPath, StatusAvailable);
         }
 
-        private async Task<List<Pet>> GetPetsByStatus(string path, string availability) {
-            List<Pet> pets = new List<Pet>();
-            List<Pet> sortedPets = new List<Pet>();
+        private async Task<IEnumerable<Pet>> GetPetsByStatus(string path, string availability) {
+            IEnumerable<Pet> pets;
+            IEnumerable<Pet> sortedPets;
 
             HttpResponseMessage response = await httpClient.GetAsync(GetPetsPath + "?status=" + availability);
             if (response.IsSuccessStatusCode) {
                 var responseAsString = await response.Content.ReadAsStringAsync();
-                pets = JsonSerializer.Deserialize<List<Pet>>(responseAsString);
+                pets = JsonSerializer.Deserialize<IEnumerable<Pet>>(responseAsString);
                 sortedPets = SortPets(pets);
                 return sortedPets;
             } else {

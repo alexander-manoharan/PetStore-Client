@@ -10,9 +10,9 @@ namespace PetStore.Demo.Models {
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("photoUrls")]
-        public List<string> PhotoUrls { get; set; }
+        public IEnumerable<string> PhotoUrls { get; set; }
         [JsonPropertyName("tags")]
-        public List<Category> Tags { get; set; }
+        public IEnumerable<Category> Tags { get; set; }
         [JsonPropertyName("status")]
         public string Status { get; set; }
 
