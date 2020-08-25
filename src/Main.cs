@@ -1,9 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using PetStore;
 
-namespace MainProgram {
-    class PetStoreDemo {
+namespace PetStore.Demo {
+    class Program {
         public static void Main(string[] args)
         {
             RunAsync().GetAwaiter().GetResult();

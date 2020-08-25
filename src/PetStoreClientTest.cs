@@ -1,5 +1,5 @@
 using System.Linq;
-using PetStore;
+using PetStore.Demo;
 using Xunit;
 
 public class PetStoreClientTest {
