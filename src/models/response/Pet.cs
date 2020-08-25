@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace PetStore.Demo.Models {
-    class Pet {
+    public class Pet {
         [JsonPropertyName("id")]
         public long Id { get; set; }
         [JsonPropertyName("category")]

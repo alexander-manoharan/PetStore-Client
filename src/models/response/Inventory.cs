@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
 
 namespace PetStore.Demo.Models {
-    class Inventory {
+    public class Inventory 
+    {
         [JsonPropertyName("sold")]
         public int Sold { get; set; }
         [JsonPropertyName("nonAvailable")]

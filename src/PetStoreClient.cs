@@ -19,46 +19,57 @@ namespace PetStore.Demo
 
         HttpClient httpClient = new HttpClient();
 
-        public Client() {
+        public Client() 
+        {
             httpClient.BaseAddress = new Uri(BaseAddress);
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue(ApplicationJson));
         }
 
-        private static IEnumerable<Pet> SortPets(IEnumerable<Pet> pets) {
+        private static IEnumerable<Pet> SortPets(IEnumerable<Pet> pets) 
+        {
             return pets.OrderBy(pet => pet.Category == null ? "" : pet.Category.Name).
                         ThenByDescending(pet => pet.Name).ToList();
         }
 
-        public async Task<Inventory> GetInventory() {
+        public async Task<Inventory> GetInventory() 
+        {
             Inventory inventory = null;
             HttpResponseMessage response = await httpClient.GetAsync(InventoryPath);
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode) 
+            {
                 var responseAsString = await response.Content.ReadAsStringAsync();
                 inventory = JsonSerializer.Deserialize<Inventory>(responseAsString);
-            } else {
+            } 
+            else 
+            {
                 Console.WriteLine("GetInventory Failure");
                 Console.Write(await response.Content.ReadAsStringAsync());
             }
             return inventory;
         }
 
-        public Task<IEnumerable<Pet>> GetAvailablePets() {
+        public Task<IEnumerable<Pet>> GetAvailablePets() 
+        {
             return GetPetsByStatus(GetPetsPath, StatusAvailable);
         }
 
-        private async Task<IEnumerable<Pet>> GetPetsByStatus(string path, string availability) {
+        private async Task<IEnumerable<Pet>> GetPetsByStatus(string path, string availability) 
+        {
             IEnumerable<Pet> pets;
             IEnumerable<Pet> sortedPets;
 
             HttpResponseMessage response = await httpClient.GetAsync(GetPetsPath + "?status=" + availability);
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode) 
+            {
                 var responseAsString = await response.Content.ReadAsStringAsync();
                 pets = JsonSerializer.Deserialize<IEnumerable<Pet>>(responseAsString);
                 sortedPets = SortPets(pets);
                 return sortedPets;
-            } else {
+            } 
+            else 
+            {
                 Console.WriteLine("GetPetsByStatus Failure");
                 return null;
             }

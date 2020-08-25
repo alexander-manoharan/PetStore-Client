@@ -1,5 +1,6 @@
 namespace PetStore.Demo.Models {
-    public enum Status {
+    public enum Status 
+    {
         Available,
         Pending,
         Sold
