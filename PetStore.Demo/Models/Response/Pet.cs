@@ -15,13 +15,5 @@ namespace PetStore.Demo.Models {
         public IEnumerable<Category> Tags { get; set; }
         [JsonPropertyName("status")]
         public string Status { get; set; }
-
-        public override string ToString() {
-            if (Category != null && Category.Name != null) {
-                return "[category: " + Category.Name + " name: " + Name + "]";
-            } else {
-                return "[category: (null) name: " + Name + "]";
-            }
-        }
     }
 }
