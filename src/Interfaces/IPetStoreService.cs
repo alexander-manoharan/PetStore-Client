@@ -6,6 +6,7 @@ namespace PetStore.Demo.Serices
 {
     public interface IPetStoreService
     {
-        Task<IEnumerable<Pet>> GetPetsByCategoryAsync();
+        Task<Inventory> GetInventoryAsync();
+        Task<IEnumerable<Pet>> GetPetsByCategoryAsync(Status status);
     }
 }

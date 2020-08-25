@@ -1,31 +1,34 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using PetStore.Demo.Models;
+using PetStore.Demo.Providers;
+using PetStore.Demo.Serices;
 
 namespace PetStore.Demo 
 {
     class Program 
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            RunAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task RunAsync() 
-        {
-            try 
+            IPetStoreService petStoreService = new PetStoreService(new PetStoreRepository());
+            try
             {
-                var client = new Client();
-                var inventory = await client.GetInventory();
-                var pets = await client.GetAvailablePets();
-                foreach(var pet in pets) 
+                IEnumerable<Pet> pets = await petStoreService.GetPetsByCategoryAsync(Status.Available);
+                var listPets = pets.ToList();
+                Console.WriteLine("Number of pets {0}", listPets.Count);
+
+                foreach(Pet pet in listPets)
                 {
-                    Console.WriteLine(pet.ToString());
+                    Console.WriteLine("Category: {0} - Pet name: {1}", pet.Category.Name, pet.Name);
                 }
-            } catch (Exception e) 
+                Console.ReadLine();
+            }
+            catch(Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            Console.ReadLine();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace PetStore.Demo.Interfaces
 {
     public interface IPetStoreRepository
     {
+        public Task<Inventory> GetInventory();
         public Task<IEnumerable<Pet>> GetPetsByStatus(Status status);
     }
 }
