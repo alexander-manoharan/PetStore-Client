@@ -27,8 +27,8 @@ namespace PetStore.Demo
         }
 
         private static List<Pet> SortPets(List<Pet> pets) {
-            return pets.OrderBy(pet => pet.category == null ? "" : pet.category.name).
-                        ThenByDescending(pet => pet.name).ToList();
+            return pets.OrderBy(pet => pet.Category == null ? "" : pet.Category.Name).
+                        ThenByDescending(pet => pet.Name).ToList();
         }
 
         public async Task<Inventory> GetInventory() {

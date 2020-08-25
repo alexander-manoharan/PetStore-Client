@@ -1,19 +1,26 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace PetStore.Demo.Models {
     class Pet {
-        public long id { get; set; }
-        public Category category { get; set; }
-        public string name { get; set; }
-        public List<string> photoUrls { get; set; }
-        public List<Category> tags { get; set; }
-        public string status { get; set; }
+        [JsonPropertyName("id")]
+        public long Id { get; set; }
+        [JsonPropertyName("category")]
+        public Category Category { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+        [JsonPropertyName("photoUrls")]
+        public List<string> PhotoUrls { get; set; }
+        [JsonPropertyName("tags")]
+        public List<Category> Tags { get; set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
 
         public override string ToString() {
-            if (category != null && category.name != null) {
-                return "[category: " + category.name + " name: " + name + "]";
+            if (Category != null && Category.Name != null) {
+                return "[category: " + Category.Name + " name: " + Name + "]";
             } else {
-                return "[category: (null) name: " + name + "]";
+                return "[category: (null) name: " + Name + "]";
             }
         }
     }

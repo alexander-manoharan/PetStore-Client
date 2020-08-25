@@ -9,7 +9,7 @@ public class PetStoreClientTest {
     public async void NumberOfPetsTest() {
         var pets = await client.GetAvailablePets();
         var inventory = await client.GetInventory();
-        Assert.Equal(inventory.available, pets.Count);
+        Assert.Equal(inventory.Available, pets.Count);
     }
 
     [Fact]
@@ -17,8 +17,8 @@ public class PetStoreClientTest {
         var pets = await client.GetAvailablePets();
         Assert.NotEmpty(pets);
 
-        var sortedPets = pets.OrderBy(pet => pet.category == null ? "" : pet.category.name).
-                        ThenByDescending(pet => pet.name).ToList();
+        var sortedPets = pets.OrderBy(pet => pet.Category == null ? "" : pet.Category.Name).
+                        ThenByDescending(pet => pet.Name).ToList();
         Assert.Equal(sortedPets, pets);
     }
 }

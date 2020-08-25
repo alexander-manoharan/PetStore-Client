@@ -1,8 +1,14 @@
+using System.Text.Json.Serialization;
+
 namespace PetStore.Demo.Models {
     class Inventory {
-        public int sold { get; set; }
-        public int nonAvailable { get; set; }
+        [JsonPropertyName("sold")]
+        public int Sold { get; set; }
+        [JsonPropertyName("nonAvailable")]
+        public int NotAvailable { get; set; }
+        [JsonPropertyName("Pending")]
         public int Pending { get; set; }
-        public int available { get; set; }
+        [JsonPropertyName("available")]
+        public int Available { get; set; }
     }
 }
