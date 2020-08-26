@@ -8,8 +8,16 @@ using PetStore.Demo.Serices;
 
 namespace PetStore.Demo 
 {
+    /// <summary>
+    /// Program entry class for PetStore demo
+    /// </summary>
     class Program 
     {
+        /// <summary>
+        /// Main entry method for PetStore demo application.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static async Task Main(string[] args)
         {
             IPetStoreService petStoreService = new PetStoreService(new PetStoreRepository());
@@ -23,12 +31,12 @@ namespace PetStore.Demo
                 {
                     Console.WriteLine("Category: {0} - Pet name: {1}", pet.Category.Name, pet.Name);
                 }
-                Console.ReadLine();
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+            Console.ReadLine();
         }
     }
 }

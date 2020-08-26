@@ -8,8 +8,16 @@ using PetStore.Demo.Serices;
 
 namespace PetStore.Demo.Providers
 {
+    /// <summary>
+    /// Implementation of <see cref="IPetStoreService"/>. Console application uses
+    /// this class to fetch data from the PetStore. The repository is abstracted 
+    /// inside the PetStore service.
+    /// </summary>
     public class PetStoreService : IPetStoreService
     {
+        /// <summary>
+        /// Stores a reference to the Repository instance.
+        /// </summary>
         private readonly IPetStoreRepository _Repository;
 
         public PetStoreService(IPetStoreRepository repository)
@@ -17,12 +25,22 @@ namespace PetStore.Demo.Providers
             _Repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+        /// <summary>
+        /// Returns the current inventory status in the PetStore
+        /// </summary>
+        /// <returns></returns>
         public async Task<Inventory> GetInventoryAsync()
         {
             Inventory inventory = await _Repository.GetInventory();
             return inventory;
         }
 
+        /// <summary>
+        /// Get Pets by required <see cref="Status"/>, ordered by category and 
+        /// arranged in descending order by name
+        /// </summary>
+        /// <param name="status">Status of the Pet in PetStore</param>
+        /// <returns>Returns list of <see cref="Pet"/> requested by status</returns>
         public async Task<IEnumerable<Pet>> GetPetsByCategoryAsync(Status status)
         {
             IEnumerable<Pet> pets = await _Repository.GetPetsByStatus(status);
