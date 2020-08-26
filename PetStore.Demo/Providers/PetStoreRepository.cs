@@ -38,7 +38,7 @@ namespace PetStore.Demo.Providers
             }
             else
             {
-                Console.WriteLine("GetInventory Failure");
+                Console.WriteLine(PetStoreResources.InventoryFailureMsg);
                 return null;
             }
         }
@@ -53,7 +53,7 @@ namespace PetStore.Demo.Providers
             } 
             else 
             {
-                Console.WriteLine("GetPetsByStatus Failure");
+                Console.WriteLine(PetStoreResources.GetPetFailureMsg);
                 return null;
             }
         }
