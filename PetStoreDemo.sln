@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Demo", "PetStore.Demo\PetStore.Demo.csproj", "{E8125EBF-D449-4148-8862-09B97AB08216}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.UnitTests.Demo", "PetStore.UnitTests.Demo\PetStore.UnitTests.Demo.csproj", "{CCBE6624-B0DD-4061-9E0D-485F99D09649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.UnitTests.Demo", "PetStore.UnitTests.Demo\PetStore.UnitTests.Demo.csproj", "{CCBE6624-B0DD-4061-9E0D-485F99D09649}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E8125EBF-D449-4148-8862-09B97AB08216} = {E8125EBF-D449-4148-8862-09B97AB08216}
 	EndProjectSection

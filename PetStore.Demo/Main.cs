@@ -25,11 +25,11 @@ namespace PetStore.Demo
             {
                 IEnumerable<Pet> pets = await petStoreService.GetPetsByCategoryAsync(Status.Available);
                 var listPets = pets.ToList();
-                Console.WriteLine("Number of pets {0}", listPets.Count);
+                Console.WriteLine(PetStoreResources.NumberOfPetsMsg, listPets.Count);
 
                 foreach(Pet pet in listPets)
                 {
-                    Console.WriteLine("Category: {0} - Pet name: {1}", pet.Category.Name, pet.Name);
+                    Console.WriteLine(PetStoreResources.PetOutputTemplate, pet.Category.Name, pet.Name);
                 }
             }
             catch(Exception e)
