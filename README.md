@@ -3,12 +3,12 @@ A simple Petstore client developed in C# that fetches list of available pets in 
 
 # Pre-requisites
 - Microsoft dotnet-sdk v3.1.401
-- Visual studio Code.
+- Visual Studio 2019.
 
 # Instructions
 
 1. Clone this repository.
-2. Open the cloned folder in Visual Studio Code.
-3. Run the solution by either Run > Run without Debugging and select environment as C# in the prompt. Rerun the project.
-4. Alternate way to run the program, from command terminal, `dotnet build` and `dotnet run`.
-5. To execute the test cases, from command terminal, type `dotnet test`.
+2. Double click the 'PetStoreDemo.sln' file to open the project in Visual Studio.
+3. Select the project 'PetStore.Demo' and click run button. This will display the output in a console.
+4. Open Test Explorer. 
+5. Click Run All Tests in PetStore.UnitTests.Demo project.
